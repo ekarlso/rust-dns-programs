@@ -1,0 +1,11 @@
+[package]
+name = "rdns"
+version = "0.0.1"
+authors = ["Endre Karlson <endre.karlson@gmail.com>"]
+
+[dependencies.dns]
+version = "0.0.1"
+path = "../rust-dns"
+
+[[bin]]
+name = "rdns"
