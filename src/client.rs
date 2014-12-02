@@ -17,8 +17,6 @@ use dns::types::Type;
 use dns::utils;
 
 fn main() {
-    //sock.send_to([7u8, 7u8].as_slice(), dst);
-
     let header = Header {..default::Default::default() };
 
     let mut questions: Vec<Question> = Vec::new();
@@ -42,5 +40,4 @@ fn main() {
     client.exchange(&mut msg);
 
     println!("Msg {}", msg);
-
 }
