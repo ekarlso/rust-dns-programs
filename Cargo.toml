@@ -7,5 +7,12 @@ authors = ["Endre Karlson <endre.karlson@gmail.com>"]
 version = "0.0.1"
 path = "../rust-dns"
 
+[dependencies.mysql]
+
 [[bin]]
 name = "rdns"
+path = "src/server_simple.rs"
+
+[[bin]]
+name = "rdns-client"
+path = "src/client.rs"

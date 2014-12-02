@@ -7,6 +7,7 @@ use std::io;
 use std::io::net::udp::UdpSocket;
 use std::io::net::ip::{Ipv4Addr, SocketAddr};
 
+use dns::rtypes::{V4Address};
 use dns::message::{Header,Message,Resource};
 use dns::types::Type;
 use dns::query::QueryResponse;
@@ -27,18 +28,24 @@ fn generate_response(query: &Message) -> io::IoResult<Message> {
     let mut answers = Vec::new();
 
     for q in query.questions.iter() {
-        let name = q.name.clone();
-        let data: Vec<u8> = "10.0.0.1".as_bytes().to_vec();
-
-        let r = Resource{
-            name: name,
+        let r1 = Resource{
+            name: q.name.clone(),
             ty: q.ty,
             class: q.class,
             ttl: 600,
-            rdata: data
+            rdata: V4Address::from_str("10.0.0.1").unwrap().to_vec()
         };
 
-        answers.push(r)
+        let r2 = Resource{
+            name: q.name.clone(),
+            ty: q.ty,
+            class: q.class,
+            ttl: 600,
+            rdata: V4Address::from_str("10.0.0.1").unwrap().to_vec()
+        };
+
+        answers.push(r1);
+        answers.push(r2);
     }
 
     let msg = Message {
