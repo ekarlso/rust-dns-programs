@@ -7,7 +7,7 @@ authors = ["Endre Karlson <endre.karlson@gmail.com>"]
 version = "0.0.1"
 path = "../rust-dns"
 
-[dependencies.mysql]
+[dependencies.docopt]
 
 [[bin]]
 name = "rdns"
